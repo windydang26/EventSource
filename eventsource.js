@@ -696,5 +696,6 @@
     global.NativeEventSource = global.EventSource;
     global.EventSource = EventSource;
   }
+  global.EventSourcePolyfill = EventSource;
 
 }(typeof window !== 'undefined' ? window : this));
