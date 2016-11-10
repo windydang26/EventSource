@@ -20,8 +20,8 @@
     this._internal = new XHRTransportInternal(xhr, onStartCallback, onProgressCallback, onFinishCallback, thisArg);
   }
 
-  XHRTransport.prototype.open = function (url, withCredentials) {
-    this._internal.open(url, withCredentials);
+  XHRTransport.prototype.open = function (url, withCredentials, headers) {
+    this._internal.open(url, withCredentials, headers);
   };
 
   XHRTransport.prototype.cancel = function () {
@@ -39,6 +39,7 @@
     this.offset = 0;
     this.url = "";
     this.withCredentials = false;
+    this.headers = {};
     this.timeout = 0;
   }
 
@@ -173,7 +174,9 @@
       this.onReadyStateChange();
     }
   };
-  XHRTransportInternal.prototype.open = function (url, withCredentials) {
+  XHRTransportInternal.prototype.open = function (
+    url, withCredentials, headers
+  ) {
     if (this.timeout !== 0) {
       clearTimeout(this.timeout);
       this.timeout = 0;
@@ -181,6 +184,7 @@
 
     this.url = url;
     this.withCredentials = withCredentials;
+    this.headers = headers;
 
     this.state = 1;
     this.charOffset = 0;
@@ -242,6 +246,15 @@
       this.xhr.setRequestHeader("Accept", "text/event-stream");
       // Request header field Last-Event-ID is not allowed by Access-Control-Allow-Headers.
       //this.xhr.setRequestHeader("Last-Event-ID", this.lastEventId);
+
+      if (this.headers) {
+        for (var header in this.headers) {
+          if (this.headers.hasOwnProperty(header)) {
+            var value = this.headers[header];
+            this.xhr.setRequestHeader(header, value);
+          }
+        }
+      }
     }
 
     try {
@@ -427,6 +440,7 @@
     this.url = url.toString();
     this.readyState = CONNECTING;
     this.withCredentials = isCORSSupported && options != undefined && Boolean(options.withCredentials);
+    this.headers = (options != undefined)? options.headers : {};
 
     this.es = es;
     this.initialRetry = getDuration(1000, 0);
@@ -631,7 +645,7 @@
       s = this.url;
     }
     try {
-      this.transport.open(s, this.withCredentials);
+      this.transport.open(s, this.withCredentials, this.headers);
     } catch (error) {
       this.close();
       throw error;

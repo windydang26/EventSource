@@ -29,6 +29,7 @@ Advantages:
 
 * Simple server-side code
 * Cross-domain requests support ("withCredentials" is not supported in IE8-IE9)
+* Additional HTTP headers support (non-standard)
 
 Server-side requirements:
 -------------------------
@@ -181,6 +182,16 @@ index.html (php/index.html):
 <body>
 </body>
 </html>
+```
+
+Additional HTTP Headers
+------------------
+```javascript
+  var es = new EventSource("events.php", {
+    headers: {
+      'X-Custom-Auth': auth.token
+      }
+  });
 ```
 
 
