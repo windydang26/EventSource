@@ -1,6 +1,6 @@
 {
-  "name": "event-source-polyfill",
-  "version": "0.0.7",
+  "name": "event-source-any-where",
+  "version": "1.0.0",
   "description": "A polyfill for http://www.w3.org/TR/eventsource/ ",
   "main": "eventsource.js",
   "scripts": {
@@ -8,21 +8,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/Yaffle/EventSource.git"
+    "url": "git://github.com/Shinichi52/EventSource.git"
   },
   "keywords": [
     "sse",
     "server sent events",
     "eventsource",
     "event-source",
-    "polyfill"
+    "polyfill",
+    "react-sse",
+    "react-event-source",
   ],
-  "author": "Yaffle (https://github.com/Yaffle)",
+  "author": "Shinichi52 (https://github.com/Shinichi52)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Yaffle/EventSource/issues"
+    "url": "https://github.com/Shinichi52/EventSource/issues"
   },
-  "homepage": "https://github.com/Yaffle/EventSource",
+  "homepage": "https://github.com/Shinichi52/EventSource",
   "devDependencies": {
     "grunt": "^0.4.4",
     "grunt-cli": "^0.1.13",
