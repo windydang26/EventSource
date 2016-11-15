@@ -8,7 +8,7 @@ Base On: https://github.com/eohland/EventSource
     <script src="https://github.com/Shinichi52/EventSource/blob/master/eventsource.min.js"></script>
 
 # Using On React Navtive, NodeJS (not require in html5)
-    require('./eventsource'); // for overwrite EventSource
+    require('event-source-any-where'); // for overwrite EventSource
 
 # Using EventSource
 ```javascript
