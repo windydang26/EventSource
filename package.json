@@ -1,33 +1,33 @@
 {
-  "name": "event-source-any-where",
-  "version": "1.0.0",
-  "description": "A polyfill for http://www.w3.org/TR/eventsource/ ",
-  "main": "eventsource.js",
-  "scripts": {
-    "build": "grunt"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/Shinichi52/EventSource.git"
-  },
-  "keywords": [
-    "sse",
-    "server sent events",
-    "eventsource",
-    "event-source",
-    "polyfill",
-    "react-sse",
-    "react-event-source",
-  ],
-  "author": "Shinichi52 (https://github.com/Shinichi52)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Shinichi52/EventSource/issues"
-  },
-  "homepage": "https://github.com/Shinichi52/EventSource",
-  "devDependencies": {
-    "grunt": "^0.4.4",
-    "grunt-cli": "^0.1.13",
-    "grunt-contrib-uglify": "~0.2.4"
-  }
+    "name": "event-source-any-where",
+    "version": "1.0.0",
+    "description": "A polyfill for http://www.w3.org/TR/eventsource/ ",
+    "main": "eventsource.js",
+    "scripts": {
+        "build": "grunt"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/Shinichi52/EventSource.git"
+    },
+    "keywords": [
+        "sse",
+        "server sent events",
+        "eventsource",
+        "event-source",
+        "polyfill",
+        "react-sse",
+        "react-event-source"
+    ],
+    "author": "Shinichi52 (https://github.com/Shinichi52)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Shinichi52/EventSource/issues"
+    },
+    "homepage": "https://github.com/Shinichi52/EventSource",
+    "devDependencies": {
+        "grunt": "^0.4.4",
+        "grunt-cli": "^0.1.13",
+        "grunt-contrib-uglify": "~0.2.4"
+    }
 }
