@@ -1,4 +1,3 @@
-#React Native EventSource
 #React Native Event Source
 Base On: https://github.com/eohland/EventSource
 
@@ -25,7 +24,7 @@ Base On: https://github.com/eohland/EventSource
     
 #Example:
 ```javascript
-        require('./eventsource');
+        require('event-source-any-where');
         this._consumer = new EventSource(CONFIG.urlAuth + CONFIG.serviceConsumer);
         this._consumer.addEventListener("message", this.onReceiveMessage);
         this._consumer.addEventListener("error", this.onConnectError);
