@@ -12,7 +12,7 @@ Base On: https://github.com/eohland/EventSource
 
 # Using EventSource
 ```javascript
-    let _consumer = new EventSource(YourUrl);
+    let _consumer = new EventSourceEx(YourUrl);
 
     // add event
     _consumer.addEventListener(YourKey, Callback);
@@ -25,7 +25,7 @@ Base On: https://github.com/eohland/EventSource
 #Example:
 ```javascript
         require('event-source-any-where');
-        this._consumer = new EventSource(CONFIG.urlAuth + CONFIG.serviceConsumer);
+        this._consumer = new EventSourceEx(CONFIG.urlAuth + CONFIG.serviceConsumer);
         this._consumer.addEventListener("message", this.onReceiveMessage);
         this._consumer.addEventListener("error", this.onConnectError);
 ```
