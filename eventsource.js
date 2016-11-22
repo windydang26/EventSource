@@ -1,7 +1,7 @@
 /** @license
  * eventsource.js
  * Available under MIT License (MIT)
- * https://github.com/Yaffle/EventSource/
+ * https://github.com/Shinichi52/EventSource/
  */
 
 /*jslint indent: 2, vars: true, plusplus: true */
@@ -212,23 +212,23 @@
 
     // XDomainRequest#abort removes onprogress, onerror, onload
     this.xhr.onload = function (event) {
-      that.handleEvent({type: "load"});
+      that.handleEvent({ type: "load" });
     };
     this.xhr.onerror = function () {
-      that.handleEvent({type: "error"});
+      that.handleEvent({ type: "error" });
     };
     this.xhr.onabort = function () {
-      that.handleEvent({type: "abort"});
+      that.handleEvent({ type: "abort" });
     };
     this.xhr.onprogress = function () {
-      that.handleEvent({type: "progress"});
+      that.handleEvent({ type: "progress" });
     };
     // IE 8-9 (XMLHTTPRequest)
     // Firefox 3.5 - 3.6 - ? < 9.0
     // onprogress is not fired sometimes or delayed
     // see also #64
     this.xhr.onreadystatechange = function () {
-      that.handleEvent({type: "readystatechange"});
+      that.handleEvent({ type: "readystatechange" });
     };
 
     this.xhr.open("GET", url, true);
@@ -422,7 +422,7 @@
     }
   };
 
-  function EventSource(url, options) {
+  function EventSourceEx(url, options) {
     EventTarget.call(this);
 
     this.onopen = undefined;
@@ -440,7 +440,7 @@
     this.url = url.toString();
     this.readyState = CONNECTING;
     this.withCredentials = isCORSSupported && options != undefined && Boolean(options.withCredentials);
-    this.headers = (options != undefined)? options.headers : {};
+    this.headers = (options != undefined) ? options.headers : {};
 
     this.es = es;
     this.initialRetry = getDuration(1000, 0);
@@ -486,9 +486,9 @@
       } else if (status !== 0) {
         var message = "";
         if (status !== 200) {
-          message = "EventSource's response has a status " + status + " " + statusText.replace(/\s+/g, " ") + " that is not 200. Aborting the connection.";
+          message = "EventSourceEx's response has a status " + status + " " + statusText.replace(/\s+/g, " ") + " that is not 200. Aborting the connection.";
         } else {
-          message = "EventSource's response has a Content-Type specifying an unsupported type: " + contentType.replace(/\s+/g, " ") + ". Aborting the connection.";
+          message = "EventSourceEx's response has a Content-Type specifying an unsupported type: " + contentType.replace(/\s+/g, " ") + ". Aborting the connection.";
         }
         throwError(new Error(message));
         this.close();
@@ -670,32 +670,32 @@
   }
   F.prototype = EventTarget.prototype;
 
-  EventSource.prototype = new F();
+  EventSourceEx.prototype = new F();
 
-  EventSource.prototype.close = function () {
+  EventSourceEx.prototype.close = function () {
     this._internal.close();
   };
 
-  F.call(EventSource);
+  F.call(EventSourceEx);
   if (isCORSSupported) {
-    EventSource.prototype.withCredentials = undefined;
+    EventSourceEx.prototype.withCredentials = undefined;
   }
 
   var isEventSourceSupported = function () {
     // Opera 12 fails this test, but this is fine.
-    return global.EventSource != undefined && ("withCredentials" in global.EventSource.prototype);
+    return global.EventSourceEx != undefined && ("withCredentials" in global.EventSourceEx.prototype);
   };
 
-  if (Transport != undefined && (global.EventSource == undefined || (isCORSSupported && !isEventSourceSupported()))) {
-    // Why replace a native EventSource ?
+  if (Transport != undefined && (global.EventSourceEx == undefined || (isCORSSupported && !isEventSourceSupported()))) {
+    // Why replace a native EventSourceEx ?
     // https://bugzilla.mozilla.org/show_bug.cgi?id=444328
     // https://bugzilla.mozilla.org/show_bug.cgi?id=831392
     // https://code.google.com/p/chromium/issues/detail?id=260144
     // https://code.google.com/p/chromium/issues/detail?id=225654
     // ...
-    global.NativeEventSource = global.EventSource;
-    global.EventSource = EventSource;
+    global.NativeEventSource = global.EventSourceEx;
+    global.EventSourceEx = EventSourceEx;
   }
-  global.EventSourcePolyfill = EventSource;
+  global.EventSourcePolyfill = EventSourceEx;
 
-}(typeof window !== 'undefined' ? window : this));
+} (typeof window !== 'undefined' ? window : this));
