@@ -145,7 +145,7 @@
   };
   XHRTransportInternal.prototype.onTimeout1 = function () {
     this.timeout = 0;
-    this.open(this.url, this.withCredentials);
+    this.open(this.url, this.withCredentials, this.headers);
   };
   XHRTransportInternal.prototype.onTimeout0 = function () {
     var that = this;
@@ -698,4 +698,4 @@
   }
   global.EventSourcePolyfill = EventSourceEx;
 
-} (typeof window !== 'undefined' ? window : this));
+}(typeof window !== 'undefined' ? window : this));
