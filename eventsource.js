@@ -261,7 +261,8 @@
       this.xhr.send(undefined);
     } catch (error1) {
       // Safari 5.1.7, Opera 12
-      throw error1;
+      console.warn('EVENTSOUCE EXCEPTION: ', error1);
+      // throw error1;
     }
 
     if (("readyState" in this.xhr) && global.opera != undefined) {
@@ -309,7 +310,8 @@
 
   function throwError(e) {
     setTimeout(function () {
-      throw e;
+      console.warn('EVENTSOUCE EXCEPTION: ', e);
+      // throw e;
     }, 0);
   }
 
@@ -486,7 +488,7 @@
       } else if (status !== 0) {
         var message = "";
         if (status !== 200) {
-          message = "EventSourceEx's response has a status " + status + " " + (statusText+"").replace(/\s+/g, " ") + " that is not 200. Aborting the connection.";
+          message = "EventSourceEx's response has a status " + status + " " + (statusText + "").replace(/\s+/g, " ") + " that is not 200. Aborting the connection.";
         } else {
           message = "EventSourceEx's response has a Content-Type specifying an unsupported type: " + contentType.replace(/\s+/g, " ") + ". Aborting the connection.";
         }
@@ -648,7 +650,7 @@
       this.transport.open(s, this.withCredentials, this.headers);
     } catch (error) {
       this.close();
-      throw error;
+      console.warn('EVENTSOUCE EXCEPTION: ', error);
     }
   };
 
