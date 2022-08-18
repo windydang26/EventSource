@@ -424,7 +424,7 @@
     }
   };
 
-  function EventSourceEx(url, options) {
+  export function EventSourceEx(url, options) {
     EventTarget.call(this);
 
     this.onopen = undefined;
