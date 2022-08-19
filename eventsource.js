@@ -424,7 +424,7 @@
     }
   };
 
-  export function EventSourceEx(url, options) {
+  function EventSourceEx(url, options) {
     EventTarget.call(this);
 
     this.onopen = undefined;
@@ -701,3 +701,5 @@
   global.EventSourcePolyfill = EventSourceEx;
 
 }(typeof window !== 'undefined' ? window : this));
+
+export default EventSourceEx;
